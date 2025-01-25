@@ -6,18 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKB Bank - Account Overview</title>
     <style>
-        /* (Your existing CSS) */
+        /* Global styles */
         html, body {
             height: 100%;
             margin: 0;
-        }
-        body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
             background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             color: #333;
         }
+
         .header {
             background-color: #004b87;
             padding: 10px 20px;
@@ -26,24 +28,30 @@
             align-items: center;
             color: white;
         }
+
         .header img {
             width: 120px;
         }
+
         .header-nav a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             font-size: 14px;
         }
+
         .header-nav a:hover {
             text-decoration: underline;
         }
+
         .container {
             display: flex;
             max-width: 1200px;
             margin: 20px auto;
             flex: 1;
+            flex-wrap: wrap;
         }
+
         .sidebar {
             width: 250px;
             background-color: #f9f9f9;
@@ -51,6 +59,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-right: 20px;
         }
+
         .sidebar a {
             display: block;
             padding: 10px;
@@ -60,9 +69,11 @@
             margin-bottom: 10px;
             border-radius: 4px;
         }
+
         .sidebar a:hover {
             background-color: #e0e0e0;
         }
+
         .content {
             flex: 1;
             background-color: #ffffff;
@@ -70,99 +81,163 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-        .content h2 {
-            color: #004b87;
-            margin-bottom: 20px;
-        }
-        .balance {
+
+        /* Small screen balance section */
+        .balance-small {
+            flex: 1;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             background-color: #e6f7ff;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 200px;
         }
-        .balance h3 {
+
+        .balance-small h3 {
+            font-size: 16px;
+            color: #004b87;
             margin: 0;
-            font-size: 20px;
+            margin-bottom: 5px;
         }
-        .balance p {
-            font-size: 24px;
+
+        .balance-small .balance-amount {
+            font-size: 20px;
             font-weight: bold;
             color: #0073cf;
             margin: 0;
         }
-        .transaction-history {
-            margin-bottom: 20px;
-        }
+
+        /* Transaction history table styles */
         .transaction-history table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
         .transaction-history th, .transaction-history td {
             padding: 12px;
             border-bottom: 1px solid #ddd;
             text-align: left;
         }
+
         .transaction-history th {
             background-color: #f4f4f4;
             font-weight: bold;
         }
-        .account-settings {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .balance {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .balance-small {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .transaction-history table th, .transaction-history table td {
+                font-size: 14px;
+                padding: 10px;
+            }
         }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #777;
-            margin-top: auto;
+
+        @media screen and (max-width: 768px) {
+            .header-nav a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+
+            .sidebar a {
+                font-size: 14px;
+            }
+
+            .transfer-form label,
+            .transfer-form input,
+            .transfer-form select,
+            .transfer-form button {
+                font-size: 14px;
+            }
+
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .balance-small {
+                width: 100%;
+            }
+
+            .balance {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .transaction-history table th, .transaction-history table td {
+                font-size: 12px;
+                padding: 8px;
+            }
         }
-        .footer a {
-            color: #0073cf;
-            text-decoration: none;
-            margin: 0 5px;
+
+        @media screen and (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-nav a {
+                font-size: 14px;
+                margin: 5px 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .balance-small {
+                padding: 10px;
+            }
+
+            .transfer-form label,
+            .transfer-form input,
+            .transfer-form select,
+            .transfer-form button {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .transaction-history table th, .transaction-history table td {
+                font-size: 12px;
+                padding: 8px;
+            }
         }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-
-
-
-
-        .balance-small {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    background-color: #e6f7ff;
-    border-radius: 6px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    min-width: 200px; /* Ensure a minimum width for responsiveness */
-}
-
-.balance-small h3 {
-    font-size: 16px;
-    color: #004b87;
-    margin: 0;
-    margin-bottom: 5px;
-}
-
-.balance-small .balance-amount {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0073cf;
-    margin: 0;
-}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
