@@ -2,24 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKB Bank - Account Overview</title>
     <style>
-        /* Global styles */
+        /* (Your existing CSS) */
         html, body {
             height: 100%;
             margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
-
         body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             color: #333;
         }
-
         .header {
             background-color: #004b87;
             padding: 10px 20px;
@@ -27,31 +25,38 @@
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
-
+        .header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
         .header img {
             width: 120px;
         }
-
+        .header-nav {
+            display: flex;
+            align-items: center;
+        }
         .header-nav a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             font-size: 14px;
         }
-
         .header-nav a:hover {
             text-decoration: underline;
         }
-
         .container {
             display: flex;
             max-width: 1200px;
             margin: 20px auto;
             flex: 1;
             flex-wrap: wrap;
+            gap: 20px;
         }
-
         .sidebar {
             width: 250px;
             background-color: #f9f9f9;
@@ -59,7 +64,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-right: 20px;
         }
-
         .sidebar a {
             display: block;
             padding: 10px;
@@ -69,11 +73,9 @@
             margin-bottom: 10px;
             border-radius: 4px;
         }
-
         .sidebar a:hover {
             background-color: #e0e0e0;
         }
-
         .content {
             flex: 1;
             background-color: #ffffff;
@@ -81,8 +83,69 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+        .content h2 {
+            color: #004b87;
+            margin-bottom: 20px;
+        }
+        .balance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .balance h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .balance p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0073cf;
+            margin: 0;
+        }
+        .transaction-history {
+            margin-bottom: 20px;
+        }
+        .transaction-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .transaction-history th, .transaction-history td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .transaction-history th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .account-settings {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            margin-top: auto;
+        }
+        .footer a {
+            color: #0073cf;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-        /* Small screen balance section */
         .balance-small {
             flex: 1;
             display: flex;
@@ -110,134 +173,70 @@
             margin: 0;
         }
 
-        /* Transaction history table styles */
-        .transaction-history table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .transaction-history th, .transaction-history td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-
-        .transaction-history th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-
-        /* Media Queries for Responsiveness */
-        @media screen and (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .content {
-                padding: 15px;
-            }
-
-            .balance {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .balance-small {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .transaction-history table th, .transaction-history table td {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .header-nav a {
-                font-size: 12px;
-                margin: 0 5px;
-            }
-
-            .sidebar a {
-                font-size: 14px;
-            }
-
-            .transfer-form label,
-            .transfer-form input,
-            .transfer-form select,
-            .transfer-form button {
-                font-size: 14px;
-            }
-
-            .container {
-                flex-direction: column;
-                padding: 10px;
-            }
-
-            .balance-small {
-                width: 100%;
-            }
-
-            .balance {
-                flex-direction: column;
-                margin-bottom: 20px;
-            }
-
-            .content {
-                padding: 10px;
-            }
-
-            .transaction-history table th, .transaction-history table td {
-                font-size: 12px;
-                padding: 8px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .header {
                 flex-direction: column;
                 align-items: flex-start;
+                padding: 20px;
+                text-align: center;
             }
-
+            .header-nav {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
             .header-nav a {
-                font-size: 14px;
                 margin: 5px 0;
             }
-
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
             .sidebar {
                 width: 100%;
-                padding: 10px;
+                margin-right: 0;
             }
-
-            .container {
-                padding: 10px;
+            .balance, .balance-small {
+                flex-direction: column;
+                align-items: center;
             }
-
             .balance-small {
-                padding: 10px;
-            }
-
-            .transfer-form label,
-            .transfer-form input,
-            .transfer-form select,
-            .transfer-form button {
-                font-size: 14px;
-                padding: 8px;
-            }
-
-            .transaction-history table th, .transaction-history table td {
-                font-size: 12px;
-                padding: 8px;
+                width: 100%;
+                margin-bottom: 15px;
             }
         }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
+            }
+            .header h2 {
+                font-size: 20px;
+            }
+            .header-nav a {
+                font-size: 12px;
+            }
+            .container {
+                padding: 5px;
+            }
+            .content {
+                padding: 10px;
+            }
+            .balance h3 {
+                font-size: 18px;
+            }
+            .balance p {
+                font-size: 20px;
+            }
+            .balance-small h3 {
+                font-size: 14px;
+            }
+            .balance-small .balance-amount {
+                font-size: 18px;
+            }
+        }
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -257,9 +256,6 @@
         </nav>
     </header>
 
-
-    
-    
     <div class="container">
         <aside class="sidebar">
             <a href="Home.html">Account Overview</a>
@@ -288,7 +284,6 @@
                 <p class="balance-amount">€10,000.00</p>
             </section>
             
-          
             <section class="transfer-form" style="padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
                 <h2>Transfer Money</h2>
                 <form id="transfer-form" onsubmit="handleTransfer(event)">
@@ -332,7 +327,6 @@
                     <button type="submit" style="background-color: #004b87; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Transfer</button>
                 </form>
             </section>
-            
 
             <section class="transaction-history">
                 <h2>Recent Transactions</h2>
@@ -410,17 +404,16 @@
                 </table>
             </section>
 
-            <!-- <section class="account-settings">
-                <h2>Account Settings</h2>
-                <p>Manage your account preferences and security settings.</p>
-                <a href="Accountsettings.html" style="display: inline-block; padding: 10px 20px; background-color: #004b87; color: white; text-decoration: none; border-radius: 4px;">Go to Settings</a>
-            </section> -->
         </main>
     </div>
 
     <footer class="footer">
         <p>&copy; 2025 DKB Bank. All rights reserved. <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a></p>
     </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="scriptaddtransact.js"></script>
+    <script src="fetchdisplaytransaction.js"></script>
 
     <script>
         async function handleTransfer(event) {
@@ -437,7 +430,7 @@
             // Show SweetAlert with transfer details
             Swal.fire({
                 title: 'Confirm Transfer',
-                html: `<p>Amount: $${amount}</p>
+                html: `<p>Amount: €${amount}</p>
                        <p>Recipient: ${recipientName}</p>
                        <p>Account Number: ${recipientAccount}</p>
                        <p>Routing Number: ${routingNumber}</p>
@@ -467,46 +460,24 @@
                         if (response.ok) {
                             // Display success alert
                             Swal.fire({
-                                title: 'Transfer Initiated',
-                                text: `Your transfer of $${amount} to ${recipientName} is being processed.`,
-                                icon: 'info'
+                                title: 'Transfer Successful',
+                                text: `You have successfully transferred €${amount} to ${recipientName}.`,
+                                icon: 'success',
                             });
-        
-                            // Add the transaction to the transaction history with "Processing" status
-                            const transactionHistoryTable = document.querySelector('.transaction-history tbody');
-                            const currentDate = new Date().toLocaleDateString('en-US'); // Get current date
-        
-                            const newRow = document.createElement('tr');
-                            newRow.innerHTML = `
-                                <td>${currentDate}</td>
-                                <td>Transfer to ${recipientName}</td>
-                                <td>-$${amount}</td>
-                                <td>Processing</td>
-                            `;
-                            transactionHistoryTable.appendChild(newRow);
-        
-                            // Optionally, clear the form fields after successful transfer
-                            document.getElementById('transfer-form').reset();
                         } else {
-                            throw new Error(data.message || 'Error initiating transfer');
+                            throw new Error(data.message || 'Transfer failed.');
                         }
                     } catch (error) {
                         Swal.fire({
-                            title: 'Error',
+                            title: 'Transfer Failed',
                             text: error.message,
-                            icon: 'error'
+                            icon: 'error',
                         });
                     }
                 }
             });
         }
     </script>
+</body>
 
-    <script src="scriptaddtransact.js">
-
-    </script>
-    
-<script src="fetchdisplaytransaction.js"></script>
-
-
-
+</html>

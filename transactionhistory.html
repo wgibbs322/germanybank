@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chase Bank - Account Overview</title>
+    <title>DKB Bank - transaction-history</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -22,17 +22,25 @@
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .header img {
             width: 120px;
+            max-width: 100%;
+        }
+        .header-nav {
+            display: flex;
+            gap: 15px;
         }
         .header-nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
             font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
         .header-nav a:hover {
+            color: #f4f4f4;
             text-decoration: underline;
         }
         .container {
@@ -40,6 +48,8 @@
             max-width: 1200px;
             margin: 20px auto;
             flex-grow: 1; /* Make this container take up the remaining space */
+            flex-direction: row;
+            gap: 20px;
         }
         .sidebar {
             width: 250px;
@@ -129,11 +139,62 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-nav a {
+                font-size: 16px;
+                padding: 8px 0;
+            }
+            .container {
+                margin: 10px;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .header img {
+                width: 100px;
+            }
+            .header-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-nav a {
+                font-size: 14px;
+                padding: 6px 0;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
-        <img src="https://www.chase.com/etc/designs/chase-ux/css/images/logo-chase.svg" alt="Chase Logo">
+        <h3>DKB</h3>
         <nav class="header-nav">
             <a href="Home.html">Account Overview</a>
             <a href="transactionhistory.html">Transaction History</a>
@@ -233,16 +294,11 @@
                     </tbody>
                 </table>
             </section>
-            
-            <!-- <section class="account-settings">
-                <h2>Account Settings</h2>
-                <p>Update your personal information, set up alerts, and more.</p>
-            </section> -->
         </main>
     </div>
     
     <footer class="footer">
-        <p>&copy; 2024 Chase Bank. All rights reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        <p>&copy; 2024 DKB Bank. All rights reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </footer>
 </body>
 </html>

@@ -12,25 +12,32 @@
             background-color: #f8f9fa;
         }
 
+        /* Header Styles */
         .header {
             background-color: #004b87;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         .header img {
             width: 120px;
         }
+
         .header-nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
             font-size: 14px;
+            transition: color 0.3s ease;
         }
+
         .header-nav a:hover {
             text-decoration: underline;
+            color: #ffcc00;
         }
 
         /* Footer Styles */
@@ -171,6 +178,49 @@
             border-radius: 5px;
             text-align: center;
             margin-top: 20px;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .header-nav-mobile {
+                display: block;
+                font-size: 14px;
+            }
+
+            .bill-pay-container {
+                padding: 15px;
+                margin: 30px auto;
+            }
+
+            .recent-payments {
+                margin-top: 20px;
+            }
+
+            .search-payees input {
+                font-size: 1rem;
+            }
+        }
+
+        /* For smaller screens */
+        @media (max-width: 576px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-nav a {
+                font-size: 12px;
+                margin: 5px 0;
+            }
+
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+            }
         }
     </style>
 </head>

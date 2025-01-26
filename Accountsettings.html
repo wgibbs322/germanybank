@@ -14,27 +14,61 @@
             flex-direction: column;
         }
 
+        /* Header Styles */
         .header {
             background-color: #004b87;
-            padding: 10px 20px;
+            padding: 10px 30px; /* Slightly larger padding for a more spacious feel */
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            position: sticky;
+            top: 0; /* Make the header sticky so it stays at the top */
+            z-index: 1000; /* Ensure the header stays on top of other content */
         }
-        .header img {
-            width: 120px;
+
+        /* Logo */
+        .header-logo img {
+            max-height: 50px; /* Make sure logo height is consistent */
         }
+
+        /* Navigation Styles */
+        .header-nav {
+            display: flex;
+            align-items: center;
+        }
+
         .header-nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
-            font-size: 14px;
+            margin: 0 15px; /* Increased margin for better spacing */
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and hover effects */
         }
+
         .header-nav a:hover {
-            text-decoration: underline;
+            color: #00b0ff; /* Bright blue color on hover */
+            transform: translateY(-2px); /* Slightly lift the link on hover for a dynamic effect */
         }
-        /* Main content area should grow to fill space */
+
+        /* Mobile responsiveness */
+        @media (max-width: 767px) {
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            .header-nav a {
+                margin: 8px 0;
+                font-size: 18px; /* Slightly larger text for readability on small devices */
+            }
+        }
+
+        /* Main content area */
         .content {
             flex: 1;
             display: flex;
@@ -47,17 +81,18 @@
             background-color: white;
             border: 1px solid #dee2e6;
             border-radius: 5px;
-            padding: 20px;
+            padding: 25px;
             max-width: 800px;
             width: 100%;
             margin: 50px auto;
         }
 
         .settings-header {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 20px;
             text-align: center;
+            color: #004b87;
         }
 
         .settings-list {
@@ -68,6 +103,7 @@
             padding: 15px;
             border-bottom: 1px solid #dee2e6;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .settings-item:last-child {
@@ -111,14 +147,15 @@
             color: #0070c9;
             text-decoration: none;
             margin: 0 10px;
+            transition: text-decoration 0.3s ease;
         }
 
         .chase-footer a:hover {
             text-decoration: underline;
         }
 
-         /* Unavailable Service Notice */
-         .unavailable-notice {
+        /* Unavailable Service Notice */
+        .unavailable-notice {
             background-color: #fff3cd;
             border: 1px solid #ffeeba;
             color: #856404;
@@ -126,6 +163,22 @@
             border-radius: 5px;
             text-align: center;
             margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            .header-nav a {
+                margin: 8px 0;
+                font-size: 18px; /* Slightly larger text for readability on small devices */
+            }
         }
     </style>
 </head>

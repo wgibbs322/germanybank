@@ -12,23 +12,27 @@
             background-color: #f8f9fa;
         }
 
-       .header {
+        .header {
             background-color: #004b87;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .header img {
             width: 120px;
         }
+
         .header-nav a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             font-size: 14px;
         }
+
         .header-nav a:hover {
             text-decoration: underline;
         }
@@ -106,6 +110,74 @@
 
         .service-edit:hover {
             text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            .header-nav a {
+                margin: 5px 0;
+                font-size: 16px;
+            }
+
+            .service-container {
+                padding: 15px;
+                max-width: 100%;
+                margin: 20px 10px;
+            }
+
+            .service-header {
+                font-size: 1.2rem;
+            }
+
+            .service-list {
+                padding-left: 0;
+            }
+
+            .service-item {
+                padding: 10px;
+            }
+
+            .service-item .service-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .service-header {
+                font-size: 1.1rem;
+            }
+
+            .service-nav {
+                display: none;
+            }
+
+            .service-item {
+                padding: 10px 5px;
+            }
+        }
+
+        /* Service Unavailable Notice */
+        .unavailable-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -242,6 +314,11 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- Service Unavailable Notice -->
+        <div class="unavailable-notice">
+            Service currently unavailable. Please contact customer service for assistance.
         </div>
     </div>
 

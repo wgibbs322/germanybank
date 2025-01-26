@@ -4,46 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chase Bank - Account Overview</title>
+    <title>DKB Bank - Transfer</title>
     <style>
-        /* (Your existing CSS) */
+        /* General Reset */
         html, body {
             height: 100%;
             margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             color: #333;
         }
+
+        /* Header Styling */
         .header {
             background-color: #004b87;
-            padding: 10px 20px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .header img {
             width: 120px;
+            height: auto;
+        }
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
         .header-nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
             font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
         .header-nav a:hover {
             text-decoration: underline;
+            color: #f4f4f4;
         }
+
+        /* Main Content Container */
         .container {
             display: flex;
             max-width: 1200px;
             margin: 20px auto;
             flex: 1;
+            flex-wrap: wrap; /* Allow items to wrap for smaller screens */
         }
+
+        /* Sidebar */
         .sidebar {
             width: 250px;
             background-color: #f9f9f9;
@@ -63,6 +80,8 @@
         .sidebar a:hover {
             background-color: #e0e0e0;
         }
+
+        /* Content Section */
         .content {
             flex: 1;
             background-color: #ffffff;
@@ -111,12 +130,8 @@
             background-color: #f4f4f4;
             font-weight: bold;
         }
-        .account-settings {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+
+        /* Footer */
         .footer {
             text-align: center;
             padding: 20px;
@@ -132,13 +147,76 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Media Queries for Responsiveness */
+
+        /* Mobile Devices */
+        @media (max-width: 767px) {
+            .header {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            .header-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+                gap: 10px;
+            }
+            .header-nav a {
+                margin: 5px 0;
+                font-size: 13px;
+            }
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+            }
+            .content {
+                width: 100%;
+            }
+        }
+
+        /* Tablet Devices */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 15px;
+            }
+            .header-nav {
+                font-size: 13px;
+            }
+            .sidebar {
+                width: 220px;
+            }
+            .content {
+                width: 100%;
+            }
+        }
+        
+        /* Large Screens (Desktops) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+            .sidebar {
+                width: 300px;
+            }
+            .content {
+                width: calc(100% - 320px); /* Adjust width to fit content with sidebar */
+            }
+        }
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <header class="header">
-        <img src="https://www.chase.com/etc/designs/chase-ux/css/images/logo-chase.svg" alt="Chase Logo">
+        <h3>DKB</h3>
         <nav class="header-nav">
             <a href="Home.html">Account Overview</a>
             <a href="transactionhistory.html">Transaction History</a>
@@ -222,31 +300,74 @@
                             <th>Date</th>
                             <th>Description</th>
                             <th>Amount</th>
-                            <th>Status</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>09/01/2024</td>
-                            <td>ATM Withdrawal</td>
-                            <td>-$200.00</td>
-                            <td>Completed</td>
+                            <td>01/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+€150,000.00</td>
+                            <td>€900,000.00</td>
                         </tr>
                         <tr>
-                            <td>08/31/2024</td>
-                            <td>Paycheck Deposit</td>
-                            <td>+ $2,000.00</td>
-                            <td>Completed</td>
+                            <td>08/14/2024</td>
+                            <td>Payment to Credit Card</td>
+                            <td>−€500.00</td>
+                            <td>€15,200.00</td>
                         </tr>
                         <tr>
-                            <td>08/30/2024</td>
-                            <td>Transfer to Savings</td>
-                            <td>-$500.00</td>
-                            <td>Completed</td>
+                            <td>08/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+€250,000.00</td>
+                            <td>€250,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/08/2024</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>−€150.00</td>
+                            <td>€13,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>06/15/2023</td>
+                            <td>Online Purchase</td>
+                            <td>−€120.00</td>
+                            <td>€13,850.00</td>
+                        </tr>
+                        <tr>
+                            <td>05/23/2022</td>
+                            <td>Car Loan Payment</td>
+                            <td>−€350.00</td>
+                            <td>€14,050.00</td>
+                        </tr>
+                        <tr>
+                            <td>04/05/2022</td>
+                            <td>Salary</td>
+                            <td>+€4,000.00</td>
+                            <td>€14,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>11/18/2021</td>
+                            <td>Bill Payment</td>
+                            <td>−€200.00</td>
+                            <td>€10,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>10/10/2021</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>−€180.00</td>
+                            <td>€10,600.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/01/2021</td>
+                            <td>Bonus Deposit</td>
+                            <td>+€10,000.00</td>
+                            <td>€10,780.00</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
+
 
             <!-- <section class="account-settings">
                 <h2>Account Settings</h2>
@@ -257,7 +378,7 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 Chase Bank. All rights reserved. <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a></p>
+        <p>&copy; 2024 DKB Bank. All rights reserved. <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a></p>
     </footer>
 
     <script>
@@ -351,6 +472,4 @@
 </body>
 
 </html>
-
-
 
