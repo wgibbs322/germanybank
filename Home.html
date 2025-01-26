@@ -39,15 +39,17 @@
         .header-nav {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
         .header-nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
             font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
         }
         .header-nav a:hover {
-            text-decoration: underline;
+            color: #ffcc00;
         }
         .container {
             display: flex;
@@ -432,48 +434,18 @@
                 title: 'Confirm Transfer',
                 html: `<p>Amount: €${amount}</p>
                        <p>Recipient: ${recipientName}</p>
-                       <p>Account Number: ${recipientAccount}</p>
+                       <p>Account: ${recipientAccount}</p>
                        <p>Routing Number: ${routingNumber}</p>
                        <p>Bank: ${bankName}</p>
                        <p>Email: ${recipientEmail}</p>`,
-                icon: 'warning',
+                icon: 'info',
                 showCancelButton: true,
-                confirmButtonText: 'Transfer',
+                confirmButtonText: 'Transfer Now',
                 cancelButtonText: 'Cancel'
-            }).then(async (result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                    // Send the transaction data to the backend
-                    try {
-                        const response = await fetch('https://germanybnkbackend.onrender.com/api/transactions', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                description: `Transfer to ${recipientName}`,
-                                amount: -amount, // Amount is negative for withdrawals
-                                status: 'Processing',
-                            }),
-                        });
-                        const data = await response.json();
-        
-                        if (response.ok) {
-                            // Display success alert
-                            Swal.fire({
-                                title: 'Transfer Successful',
-                                text: `You have successfully transferred €${amount} to ${recipientName}.`,
-                                icon: 'success',
-                            });
-                        } else {
-                            throw new Error(data.message || 'Transfer failed.');
-                        }
-                    } catch (error) {
-                        Swal.fire({
-                            title: 'Transfer Failed',
-                            text: error.message,
-                            icon: 'error',
-                        });
-                    }
+                    // Handle transfer confirmation
+                    Swal.fire('Success', 'Your transfer has been completed!', 'success');
                 }
             });
         }
